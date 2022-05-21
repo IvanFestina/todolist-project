@@ -24,11 +24,8 @@ export const loginTC = createAsyncThunk<any, LoginParamsType, { rejectValue: { e
                 fieldsErrors: undefined
             })
         }
-    }
-)
-
-
-export const logoutTC = createAsyncThunk('auth/login', async (param, thunkAPI) => {
+    })
+export const logoutTC = createAsyncThunk('auth/logout', async (param, thunkAPI) => {
         thunkAPI.dispatch(setAppStatusAC({status: 'loading'}))
         try {
             const res = await authAPI.logout()
@@ -44,9 +41,7 @@ export const logoutTC = createAsyncThunk('auth/login', async (param, thunkAPI) =
             handleServerNetworkError(error, thunkAPI.dispatch)
             return thunkAPI.rejectWithValue({})
         }
-    }
-)
-
+    })
 
 const slice = createSlice({
     name: 'auth',
